@@ -1,0 +1,10 @@
+BuenosAires SaoPaulo 10 15 20 50
+SaoPaulo London 8 12 18 40
+London Tokyo 14 20 25 60
+Tokyo Paris 6 9 12 30
+Paris Berlin 11 16 22 55
+Berlin Barcelona 9 13 15 35
+Barcelona BuenosAires 7 10 14 28
+Tokyo SaoPaulo 13 19 28 65
+Berlin BuenosAires 10 15 21 50
+London Berlin 12 18 24 58
