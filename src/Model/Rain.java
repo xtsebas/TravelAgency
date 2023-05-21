@@ -58,6 +58,14 @@ public class Rain implements Igraph{
         SIZE = sIZE;
     }
 
+    public String[] getVertices() {
+        return vertices;
+    }
+
+    public void setVertices(String[] vertices) {
+        this.vertices = vertices;
+    }
+
     public void CalcularRutas() {
         for (int i = 0; i < SIZE; i++) { //Que fila y que columna trabajo
             for (int j = 0; j < SIZE; j++) {

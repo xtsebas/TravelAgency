@@ -31,5 +31,9 @@ public interface Igraph {
      */
     public void setSIZE(int sIZE);
 
+    public String[] getVertices();
+
+    public void setVertices(String[] vertices);
+
     public void CalcularRutas();
 }
