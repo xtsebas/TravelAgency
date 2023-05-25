@@ -43,7 +43,7 @@ public class Main {
                     System.out.println("Cual clima (escribirlo) \n Normal\n Lluvia\n Nieve\n Tormenta");
                     weather= in.nextLine();
                     Igraph igraph= GraphHandling.findGraph(weather);
-                    String center= GraphHandling.FindCenter(igraph);
+                    String center= GraphHandling.FindCenter(weather);
                     System.out.println("El centro del grafo es la ciudad " + center);
                     break;
                 case 3:

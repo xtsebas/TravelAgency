@@ -2,17 +2,26 @@ package Controller;
 
 import Model.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GraphHandling {
     public static int findDistance(String weather, String city1, String city2){
+        Igraph igraph = findGraph(weather);
+        int indiceOrigen = Arrays.asList(igraph.getVertices()).indexOf(city1);
+        int indiceDestino = Arrays.asList(igraph.getVertices()).indexOf(city2);
 
-        return 0;
+        return igraph.getDistancias()[indiceOrigen][indiceDestino];
     }
 
-    public static String FindCenter(Igraph igraph){
-        return null;
+    public static String FindCenter(String weather){
+        Igraph igraph = findGraph(weather);
+
+        int[] coordenates = findCenterCalculate(igraph.getDistancias());
+        String[][] Matrix= igraph.getRecorridos();
+        return Matrix[coordenates[0]][coordenates[1]];
     }
 
     public static ArrayList showPath(String weather, String city1, String city2){
@@ -87,5 +96,36 @@ public class GraphHandling {
                 break;
         }
         return igraph;
+    }
+
+    public static int[] findCenterCalculate(int[][] matrizAdyacencia) {
+        int n = matrizAdyacencia.length;
+        int[] distanciasMaximas = new int[n];
+
+        // Inicializar distancias máximas con cero
+        Arrays.fill(distanciasMaximas, 0);
+
+        // Calcular las distancias máximas para cada vértice
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrizAdyacencia[i][j] != 999 && matrizAdyacencia[i][j] > distanciasMaximas[i]) {
+                    distanciasMaximas[i] = matrizAdyacencia[i][j];
+                }
+            }
+        }
+
+        // Encontrar el mínimo de las distancias máximas
+        int fila = 0;
+        int columna = 0;
+        int minDistanciaMaxima = Integer.MAX_VALUE;
+        for (int i = 0; i < n; i++) {
+            if (distanciasMaximas[i] < minDistanciaMaxima) {
+                minDistanciaMaxima = distanciasMaximas[i];
+                fila = i;
+                columna = i;
+            }
+        }
+
+        return new int[]{fila, columna};
     }
 }
