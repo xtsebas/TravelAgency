@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static Controller.ReadFile.*;
+
 public class GraphHandling {
     public static int findDistance(String weather, String city1, String city2){
         Igraph igraph = findGraph(weather);
@@ -30,12 +32,12 @@ public class GraphHandling {
         int two=0;
         ArrayList Path= null;
         ArrayList cities= new ArrayList<>(List.of(graph.getVertices()));
-        for (int i = 0; i < cities.size(); i++) {
-            if (city1 == cities.get(i)){
-                one=i;
+        for (Object city: cities){
+            if (city.equals(city1)){
+                one=cities.indexOf(city);
             }
-            if (city2== cities.get(i)){
-                two=i;
+            if (city.equals(city2)){
+                two=cities.indexOf(city);
             }
         }
         String prov= graph.getVertices()[two];;
@@ -83,16 +85,16 @@ public class GraphHandling {
         Igraph igraph= null;
         switch (weather){
             case "Normal":
-                igraph= null;//Se necesita readfile
+                igraph= normal;
             break;
             case "Lluvia":
-                igraph= null;//Se necesita readfile
+                igraph= rain;
                 break;
             case "Nieve":
-                igraph= null;//Se necesita readfile
+                igraph= snow;
                 break;
             case "Tormenta":
-                igraph= null;//Se necesita readfile
+                igraph= storm;
                 break;
         }
         return igraph;

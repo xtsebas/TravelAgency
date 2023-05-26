@@ -1,14 +1,17 @@
 package View;
 
 import Controller.GraphHandling;
+import Controller.ReadFile;
 import Model.Igraph;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static Controller.ReadFile.*;
 public class Main {
     static Scanner in = new Scanner(System.in);
     public static void main(String[] args) {
+        String filePath = "C:\\Users\\Sebastian\\projects\\Proyectos en grupos\\Travel\\logistica.txt";
         menu();
         option();
     }
@@ -16,7 +19,7 @@ public class Main {
     static void menu(){
         System.out.println("Bienvenido a la Agencia de Busqueda, primero se necesita el txt para ingresar su tiempo de viaje");
         String fpath= in.nextLine();
-        //Readfile option
+        ReadFile.doGraphs(fpath);
     }
 
     static void option(){
