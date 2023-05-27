@@ -47,4 +47,18 @@ class GraphHandlingTest {
         GraphHandling.editMatrix("Normal", "BuenosAires", "SaoPaulo");
         assertEquals(normal.getDistancias(), dis);
     }
+
+    @org.junit.jupiter.api.Test
+    void finDistanceTest(){
+        ReadFile.dographs(filePath);
+        int Distance = GraphHandling.findDistance("Normal", "BuenosAires", "SaoPaulo");
+        assertEquals(Distance, 10);
+    }
+
+    @org.junit.jupiter.api.Test
+    void finDistanceTest(){
+        ReadFile.dographs(filePath);
+        String centro = GraphHandling.FindCenter("Normal");
+        assertEqual(Centro, "London");
+    }
 }
